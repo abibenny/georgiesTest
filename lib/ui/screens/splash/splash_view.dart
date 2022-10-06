@@ -14,34 +14,32 @@ class SplashView extends StatelessWidget {
     return ViewModelBuilder<SplashViewModel>.reactive(
       onModelReady: (model) => model.startTimer(),
         viewModelBuilder: () => SplashViewModel(),
-        builder: (context, model, child) => SafeArea(
-              child: Scaffold(
-                body: Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage("assets/images/flash.png"),fit: BoxFit.fill)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        child: Image.asset("assets/images/noun_chef.png"),
-                      ),
-                      Text(
-                        "Georgies",
-                        style: TextStyle(
-                            fontFamily: FontFamily.candara,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 50.sp,
-                            color: Palette.white),
-                      )
-                    ],
-                  ),
+        builder: (context, model, child) => Scaffold(
+          body: Container(
+            width: double.infinity,
+            height: double.infinity,
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/flash.png"),fit: BoxFit.fill)),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  child: Image.asset("assets/images/noun_chef.png"),
                 ),
-              ),
-            ));
+                Text(
+                  "Georgies",
+                  style: TextStyle(
+                      fontFamily: FontFamily.candara,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 50.sp,
+                      color: Palette.white),
+                )
+              ],
+            ),
+          ),
+        ));
   }
 }

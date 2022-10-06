@@ -11,14 +11,17 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import '../ui/screens/login/login_view.dart';
+import '../ui/screens/otp/otp_view.dart';
 import '../ui/screens/splash/splash_view.dart';
 
 class Routes {
   static const String splashView = '/';
   static const String loginView = '/login-view';
+  static const String otpView = '/otp-view';
   static const all = <String>{
     splashView,
     loginView,
+    otpView,
   };
 }
 
@@ -28,6 +31,7 @@ class StackedRouter extends RouterBase {
   final _routes = <RouteDef>[
     RouteDef(Routes.splashView, page: SplashView),
     RouteDef(Routes.loginView, page: LoginView),
+    RouteDef(Routes.otpView, page: OtpView),
   ];
   @override
   Map<Type, StackedRouteFactory> get pagesMap => _pagesMap;
@@ -41,6 +45,12 @@ class StackedRouter extends RouterBase {
     LoginView: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => const LoginView(),
+        settings: data,
+      );
+    },
+    OtpView: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => const OtpView(),
         settings: data,
       );
     },
@@ -77,6 +87,22 @@ extension NavigatorStateExtension on NavigationService {
   }) async {
     return navigateTo(
       Routes.loginView,
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> navigateToOtpView({
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo(
+      Routes.otpView,
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,
